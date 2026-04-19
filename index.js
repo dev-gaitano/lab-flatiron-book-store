@@ -45,3 +45,49 @@ const bookStore = {
 
 // Write your code here!
 
+// 1. Update Existing Element of title
+const bookStoreTitle = document.getElementById('header');
+bookStoreTitle.textContent = bookStore.name;
+
+// 2. Create New Elements for each book
+const bookList = document.getElementById('book-list');
+
+bookStore.books.forEach(book => {
+    // Create an li element called bookContainer
+    const bookContainer = document.createElement('li');
+    // Optionally set an ID for the container, e.g., book-1, book-2
+    bookContainer.id = `book-${book.id}`;
+
+    // Create an h3 element called bookTitle
+    const bookTitle = document.createElement('h3');
+    // Set bookTitle textContent to the title of the book
+    bookTitle.textContent = book.title;
+
+    // Create a p element called bookAuthor
+    const bookAuthor = document.createElement('p');
+    // Set bookAuthor textContent to the author of the book
+    bookAuthor.textContent = book.author;
+
+    // Create an img element called bookImage
+    const bookImage = document.createElement('img');
+    // Set bookImage src to the image url of the book
+    bookImage.src = book.imageUrl;
+    // Set alt text for accessibility
+    bookImage.alt = `Cover image for ${book.title}`;
+
+    // Append elements to html
+    // Append bookTitle, bookAuthor, and bookImage elements to bookContainer element
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookImage);
+
+    // Append bookContainer element to bookList
+    bookList.appendChild(bookContainer);
+});
+
+// 3. BONUS CHALLENGE: Delete Element
+// Delete the element with id of 'delete-this' from the DOM
+const elementToDelete = document.getElementById('delete-this');
+if (elementToDelete) {
+    elementToDelete.remove();
+}
